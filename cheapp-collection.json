@@ -1,0 +1,152 @@
+{
+  "info": {
+    "_postman_id": "9a7b6c2e-0000-4000-8000-000000000000",
+    "name": "cheapp API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Colección Postman para la API de cheapp (endpoints de identidad)."
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080",
+      "type": "string"
+    },
+    {
+      "key": "email",
+      "value": "alice@example.com",
+      "type": "string"
+    },
+    {
+      "key": "password",
+      "value": "P@ssw0rd",
+      "type": "string"
+    },
+    {
+      "key": "userId",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": [
+                "{{baseUrl}}/auth/login"
+              ]
+            },
+            "description": "Inicia sesión y devuelve accessToken. Después de importar ejecuta esta petición para guardar el token en las variables de la colección."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// Extrae accessToken del body de respuesta y lo guarda en las variables de la colección como 'token'",
+                  "try {",
+                  "  var json = pm.response.json();",
+                  "  if (json && json.accessToken) {",
+                  "    pm.collectionVariables.set('token', json.accessToken);",
+                  "    console.log('Token guardado en variable de colección: token');",
+                  "  } else {",
+                  "    console.log('No se encontró accessToken en la respuesta');",
+                  "  }",
+                  "} catch (e) {",
+                  "  console.log('Respuesta no es JSON o no contiene accessToken:', e);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Crear usuario",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users",
+              "host": [
+                "{{baseUrl}}/users"
+              ]
+            },
+            "description": "Crea un nuevo usuario. Espera un 201 con el id y email creado."
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener usuario por id",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/users/{{userId}}",
+              "host": [
+                "{{baseUrl}}/users/{{userId}}"
+              ]
+            },
+            "description": "Obtiene la información de un usuario por su id. Si tu API requiere autenticación, asegúrate de ejecutar primero 'Login' para poblar la variable 'token'."
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

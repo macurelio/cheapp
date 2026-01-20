@@ -1,0 +1,176 @@
+openapi: 3.0.3
+info:
+  title: cheapp - Identity API
+  version: 0.0.1
+  description: |
+    Especificación OpenAPI para el microservicio de identidad de cheapp.
+    Incluye endpoints de autenticación y gestión básica de usuarios tal como
+    aparecen en los controladores del proyecto.
+servers:
+  - url: http://localhost:8080
+    description: Servidor local
+tags:
+  - name: Auth
+    description: Autenticación (login)
+  - name: Users
+    description: Gestión de usuarios
+paths:
+  /auth/login:
+    post:
+      tags:
+        - Auth
+      summary: Iniciar sesión
+      description: Autentica a un usuario y devuelve un access token (JWT).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        '200':
+          description: Token de autenticación
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        '400':
+          description: Petición inválida (validación)
+        '401':
+          description: Credenciales inválidas
+  /users:
+    post:
+      tags:
+        - Users
+      summary: Crear usuario
+      description: Crea un nuevo usuario. Valida email y password.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUserRequest'
+      responses:
+        '201':
+          description: Usuario creado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateUserResponse'
+        '400':
+          description: Datos inválidos (email/password no cumplen restricciones)
+  /users/{id}:
+    get:
+      tags:
+        - Users
+      summary: Obtener usuario por id
+      description: Obtiene información pública del usuario. Requiere autenticación Bearer.
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+          description: ID del usuario
+      responses:
+        '200':
+          description: Usuario encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        '401':
+          description: No autorizado
+        '404':
+          description: Usuario no encontrado
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    CreateUserRequest:
+      type: object
+      required: [email, password]
+      properties:
+        email:
+          type: string
+          format: email
+          example: alice@example.com
+        password:
+          type: string
+          minLength: 8
+          maxLength: 72
+          example: P@ssw0rd
+    CreateUserResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        email:
+          type: string
+          format: email
+          example: alice@example.com
+    LoginRequest:
+      type: object
+      required: [email, password]
+      properties:
+        email:
+          type: string
+          format: email
+          example: alice@example.com
+        password:
+          type: string
+          example: P@ssw0rd
+    LoginResponse:
+      type: object
+      properties:
+        accessToken:
+          type: string
+          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+        tokenType:
+          type: string
+          example: Bearer
+        expiresInSeconds:
+          type: integer
+          example: 3600
+        userId:
+          type: integer
+          format: int64
+          example: 1
+        email:
+          type: string
+          format: email
+          example: alice@example.com
+        roles:
+          type: array
+          items:
+            type: string
+          example: ["ROLE_USER"]
+    UserResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        email:
+          type: string
+          format: email
+          example: alice@example.com
+        enabled:
+          type: boolean
+          example: true
+        roles:
+          type: array
+          items:
+            type: string
+          example: ["ROLE_USER"]
+security:
+  - bearerAuth: []

@@ -72,4 +72,15 @@ public class IdentityBeansConfig {
     GetUserUseCase getUserUseCase(UserRepositoryPort userRepositoryPort) {
         return new GetUserService(userRepositoryPort);
     }
+
+    @Bean
+    UpdateUserUseCase updateUserUseCase(UserRepositoryPort userRepositoryPort) {
+        return new UpdateUserService(userRepositoryPort);
+    }
+
+    @Bean
+    UnassignRoleUseCase unassignRoleUseCase(UserRepositoryPort userRepositoryPort,
+                                            RoleRepositoryPort roleRepositoryPort) {
+        return new UnassignRoleService(userRepositoryPort, roleRepositoryPort);
+    }
 }

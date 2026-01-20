@@ -1,7 +1,9 @@
 com/cheapp/cheapp/identity/adapters/out/persistence/jpa/repository/UserSpringDataRepository.class
+com/cheapp/cheapp/identity/application/port/in/UnassignRoleUseCase$Command.class
 com/cheapp/cheapp/identity/domain/event/UserCreatedEvent.class
 com/cheapp/cheapp/identity/adapters/out/persistence/jpa/RoleRepositoryAdapter.class
 com/cheapp/cheapp/identity/adapters/out/persistence/jpa/UserRepositoryAdapter.class
+com/cheapp/cheapp/identity/adapters/in/web/dto/AssignRoleRequest.class
 com/cheapp/cheapp/identity/application/port/out/EventPublisherPort.class
 com/cheapp/cheapp/identity/application/exception/UnauthorizedException.class
 com/cheapp/cheapp/identity/adapters/out/persistence/jpa/entity/PermissionJpaEntity.class
@@ -20,7 +22,11 @@ com/cheapp/cheapp/identity/adapters/in/web/dto/UserResponse.class
 com/cheapp/cheapp/identity/application/port/in/AuthenticateUserUseCase$Command.class
 com/cheapp/cheapp/CheappApplication.class
 com/cheapp/cheapp/identity/application/port/in/CreateUserUseCase$Command.class
+com/cheapp/cheapp/identity/application/service/UpdateUserService.class
+com/cheapp/cheapp/identity/application/port/in/UnassignRoleUseCase.class
+com/cheapp/cheapp/identity/application/port/in/UpdateUserUseCase$Command.class
 com/cheapp/cheapp/identity/application/exception/NotFoundException.class
+com/cheapp/cheapp/identity/application/service/UnassignRoleService.class
 com/cheapp/cheapp/identity/application/port/out/RoleRepositoryPort.class
 com/cheapp/cheapp/identity/application/service/AssignRoleService.class
 com/cheapp/cheapp/identity/application/port/out/JwtProviderPort$Token.class
@@ -36,7 +42,9 @@ com/cheapp/cheapp/identity/application/port/in/AssignRoleUseCase$Command.class
 com/cheapp/cheapp/identity/adapters/out/security/BCryptPasswordEncoderAdapter.class
 com/cheapp/cheapp/identity/adapters/in/web/UserController.class
 com/cheapp/cheapp/identity/adapters/out/security/jwt/JjwtJwtProviderAdapter.class
+com/cheapp/cheapp/identity/application/port/in/UpdateUserUseCase.class
 com/cheapp/cheapp/identity/domain/event/RoleAssignedEvent.class
+com/cheapp/cheapp/identity/adapters/in/web/dto/UpdateUserRequest.class
 com/cheapp/cheapp/identity/domain/event/DomainEvent.class
 com/cheapp/cheapp/identity/application/port/in/AssignRoleUseCase.class
 com/cheapp/cheapp/identity/adapters/in/web/dto/LoginResponse.class

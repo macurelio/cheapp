@@ -2,9 +2,9 @@ spring:
   application:
     name: cheapp
   datasource:
-    url: ${DB_URL:jdbc:postgresql://localhost:5432/cheapp_identity}
-    username: ${DB_USER:postgres}
-    password: ${DB_PASSWORD:postgres}
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/cheapp}
+    username: miusuario
+    password: micontraseña
   jpa:
     hibernate:
       ddl-auto: validate
@@ -20,6 +20,6 @@ logging:
 
 security:
   jwt:
-    issuer: ${JWT_ISSUER:cheapp-identity}
+    issuer: ${JWT_ISSUER:cheapp}
     secret: ${JWT_SECRET:change-me-in-prod-change-me-in-prod-change-me-in-prod}
     ttl-seconds: ${JWT_TTL_SECONDS:3600}

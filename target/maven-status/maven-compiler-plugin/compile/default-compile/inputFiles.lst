@@ -2,10 +2,12 @@
 /Users/marcoau01/PROYECTOS/cheapp/src/main/java/com/cheapp/cheapp/identity/adapters/in/web/AuthController.java
 /Users/marcoau01/PROYECTOS/cheapp/src/main/java/com/cheapp/cheapp/identity/adapters/in/web/RestExceptionHandler.java
 /Users/marcoau01/PROYECTOS/cheapp/src/main/java/com/cheapp/cheapp/identity/adapters/in/web/UserController.java
+/Users/marcoau01/PROYECTOS/cheapp/src/main/java/com/cheapp/cheapp/identity/adapters/in/web/dto/AssignRoleRequest.java
 /Users/marcoau01/PROYECTOS/cheapp/src/main/java/com/cheapp/cheapp/identity/adapters/in/web/dto/CreateUserRequest.java
 /Users/marcoau01/PROYECTOS/cheapp/src/main/java/com/cheapp/cheapp/identity/adapters/in/web/dto/CreateUserResponse.java
 /Users/marcoau01/PROYECTOS/cheapp/src/main/java/com/cheapp/cheapp/identity/adapters/in/web/dto/LoginRequest.java
 /Users/marcoau01/PROYECTOS/cheapp/src/main/java/com/cheapp/cheapp/identity/adapters/in/web/dto/LoginResponse.java
+/Users/marcoau01/PROYECTOS/cheapp/src/main/java/com/cheapp/cheapp/identity/adapters/in/web/dto/UpdateUserRequest.java
 /Users/marcoau01/PROYECTOS/cheapp/src/main/java/com/cheapp/cheapp/identity/adapters/in/web/dto/UserResponse.java
 /Users/marcoau01/PROYECTOS/cheapp/src/main/java/com/cheapp/cheapp/identity/adapters/in/web/security/JwtAuthenticationFilter.java
 /Users/marcoau01/PROYECTOS/cheapp/src/main/java/com/cheapp/cheapp/identity/adapters/in/web/security/SecurityConfig.java
@@ -28,6 +30,8 @@
 /Users/marcoau01/PROYECTOS/cheapp/src/main/java/com/cheapp/cheapp/identity/application/port/in/AuthenticateUserUseCase.java
 /Users/marcoau01/PROYECTOS/cheapp/src/main/java/com/cheapp/cheapp/identity/application/port/in/CreateUserUseCase.java
 /Users/marcoau01/PROYECTOS/cheapp/src/main/java/com/cheapp/cheapp/identity/application/port/in/GetUserUseCase.java
+/Users/marcoau01/PROYECTOS/cheapp/src/main/java/com/cheapp/cheapp/identity/application/port/in/UnassignRoleUseCase.java
+/Users/marcoau01/PROYECTOS/cheapp/src/main/java/com/cheapp/cheapp/identity/application/port/in/UpdateUserUseCase.java
 /Users/marcoau01/PROYECTOS/cheapp/src/main/java/com/cheapp/cheapp/identity/application/port/out/EventPublisherPort.java
 /Users/marcoau01/PROYECTOS/cheapp/src/main/java/com/cheapp/cheapp/identity/application/port/out/JwtProviderPort.java
 /Users/marcoau01/PROYECTOS/cheapp/src/main/java/com/cheapp/cheapp/identity/application/port/out/PasswordEncoderPort.java
@@ -37,6 +41,8 @@
 /Users/marcoau01/PROYECTOS/cheapp/src/main/java/com/cheapp/cheapp/identity/application/service/AuthenticateUserService.java
 /Users/marcoau01/PROYECTOS/cheapp/src/main/java/com/cheapp/cheapp/identity/application/service/CreateUserService.java
 /Users/marcoau01/PROYECTOS/cheapp/src/main/java/com/cheapp/cheapp/identity/application/service/GetUserService.java
+/Users/marcoau01/PROYECTOS/cheapp/src/main/java/com/cheapp/cheapp/identity/application/service/UnassignRoleService.java
+/Users/marcoau01/PROYECTOS/cheapp/src/main/java/com/cheapp/cheapp/identity/application/service/UpdateUserService.java
 /Users/marcoau01/PROYECTOS/cheapp/src/main/java/com/cheapp/cheapp/identity/config/IdentityBeansConfig.java
 /Users/marcoau01/PROYECTOS/cheapp/src/main/java/com/cheapp/cheapp/identity/domain/event/DomainEvent.java
 /Users/marcoau01/PROYECTOS/cheapp/src/main/java/com/cheapp/cheapp/identity/domain/event/RoleAssignedEvent.java
