@@ -1,0 +1,16 @@
+com/cheapp/cheapp/identity/application/service/AuthenticateUserServiceTest$StaticUserRepo.class
+com/cheapp/cheapp/identity/application/service/CreateUserServiceTest$FakePasswordEncoder.class
+com/cheapp/cheapp/identity/application/service/CreateUserServiceTest$InMemoryUserRepo.class
+com/cheapp/cheapp/identity/application/service/AuthenticateUserServiceTest$FakeJwtProvider.class
+com/cheapp/cheapp/identity/application/service/AssignRoleServiceTest$CapturingEventPublisher.class
+com/cheapp/cheapp/identity/application/service/AuthenticateUserServiceTest.class
+com/cheapp/cheapp/identity/application/service/AssignRoleServiceTest$InMemoryUserRepo.class
+com/cheapp/cheapp/identity/application/service/AssignRoleServiceTest$StaticRoleRepo.class
+com/cheapp/cheapp/CheappApplicationTests.class
+com/cheapp/cheapp/identity/application/service/AssignRoleServiceTest.class
+com/cheapp/cheapp/identity/application/service/GetUserServiceTest$StaticUserRepo.class
+com/cheapp/cheapp/identity/application/service/CreateUserServiceTest.class
+com/cheapp/cheapp/identity/application/service/CreateUserServiceTest$CapturingEventPublisher.class
+com/cheapp/cheapp/identity/application/service/GetUserServiceTest.class
+com/cheapp/cheapp/SanityTest.class
+com/cheapp/cheapp/identity/application/service/AuthenticateUserServiceTest$FakePasswordEncoder.class

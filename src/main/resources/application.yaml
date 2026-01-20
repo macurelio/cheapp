@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: cheapp
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/cheapp_identity}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:postgres}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+  flyway:
+    enabled: true
+
+logging:
+  level:
+    org.hibernate.SQL: ${HIBERNATE_SQL_LOG_LEVEL:WARN}
+
+security:
+  jwt:
+    issuer: ${JWT_ISSUER:cheapp-identity}
+    secret: ${JWT_SECRET:change-me-in-prod-change-me-in-prod-change-me-in-prod}
+    ttl-seconds: ${JWT_TTL_SECONDS:3600}

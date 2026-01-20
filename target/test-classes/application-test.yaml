@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:tc:postgresql:16-alpine:///cheapp_identity
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    enabled: true
+
+security:
+  jwt:
+    issuer: cheapp-identity-test
+    secret: test-secret-test-secret-test-secret-test-secret
+    ttl-seconds: 3600
