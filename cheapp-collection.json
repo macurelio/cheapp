@@ -30,6 +30,11 @@
       "key": "token",
       "value": "",
       "type": "string"
+    },
+    {
+      "key": "roleName",
+      "value": "ROLE_USER",
+      "type": "string"
     }
   ],
   "item": [
@@ -143,6 +148,95 @@
               ]
             },
             "description": "Obtiene la información de un usuario por su id. Si tu API requiere autenticación, asegúrate de ejecutar primero 'Login' para poblar la variable 'token'."
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar usuario",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{email}}\",\n  \"enabled\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users/{{userId}}",
+              "host": [
+                "{{baseUrl}}/users/{{userId}}"
+              ]
+            },
+            "description": "Actualiza el email o estado enabled de un usuario. Requiere token Bearer en header Authorization."
+          },
+          "response": []
+        },
+        {
+          "name": "Asignar rol",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"roleName\": \"{{roleName}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users/{{userId}}/roles",
+              "host": [
+                "{{baseUrl}}/users/{{userId}}/roles"
+              ]
+            },
+            "description": "Asigna un rol al usuario indicado (body con roleName). Requiere token Bearer."
+          },
+          "response": []
+        },
+        {
+          "name": "Quitar rol",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/users/{{userId}}/roles/{{roleName}}",
+              "host": [
+                "{{baseUrl}}/users/{{userId}}/roles/{{roleName}}"
+              ]
+            },
+            "description": "Quita el rol indicado del usuario. Requiere token Bearer."
           },
           "response": []
         }

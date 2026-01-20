@@ -21,6 +21,7 @@ paths:
         - Auth
       summary: Iniciar sesión
       description: Autentica a un usuario y devuelve un access token (JWT).
+      security: []
       requestBody:
         required: true
         content:
@@ -44,6 +45,7 @@ paths:
         - Users
       summary: Crear usuario
       description: Crea un nuevo usuario. Valida email y password.
+      security: []
       requestBody:
         required: true
         content:
@@ -86,6 +88,96 @@ paths:
           description: No autorizado
         '404':
           description: Usuario no encontrado
+    put:
+      tags:
+        - Users
+      summary: Actualizar usuario
+      description: Actualiza campos editables de un usuario. Requiere autenticación.
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+          description: ID del usuario
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserRequest'
+      responses:
+        '204':
+          description: Usuario actualizado (sin contenido)
+        '400':
+          description: Datos inválidos
+        '401':
+          description: No autorizado
+        '404':
+          description: Usuario no encontrado
+  /users/{id}/roles:
+    post:
+      tags:
+        - Users
+      summary: Asignar rol a usuario
+      description: Asigna un rol al usuario indicado. Requiere autenticación.
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+          description: ID del usuario
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssignRoleRequest'
+      responses:
+        '204':
+          description: Rol asignado (sin contenido)
+        '400':
+          description: Datos inválidos
+        '401':
+          description: No autorizado
+        '404':
+          description: Usuario no encontrado
+  /users/{id}/roles/{roleName}:
+    delete:
+      tags:
+        - Users
+      summary: Quitar rol de usuario
+      description: Elimina un rol del usuario. Requiere autenticación.
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+          description: ID del usuario
+        - name: roleName
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Nombre del rol a quitar
+      responses:
+        '204':
+          description: Rol eliminado (sin contenido)
+        '401':
+          description: No autorizado
+        '404':
+          description: Usuario o rol no encontrado
 components:
   securitySchemes:
     bearerAuth:
@@ -172,5 +264,22 @@ components:
           items:
             type: string
           example: ["ROLE_USER"]
+    UpdateUserRequest:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+          example: alice@example.com
+        enabled:
+          type: boolean
+          example: true
+    AssignRoleRequest:
+      type: object
+      required: [roleName]
+      properties:
+        roleName:
+          type: string
+          example: ROLE_USER
 security:
   - bearerAuth: []
