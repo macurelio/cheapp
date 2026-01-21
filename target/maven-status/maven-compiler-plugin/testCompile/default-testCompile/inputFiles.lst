@@ -1,6 +1,15 @@
 /Users/marcoau01/PROYECTOS/cheapp/src/test/java/com/cheapp/cheapp/CheappApplicationTests.java
 /Users/marcoau01/PROYECTOS/cheapp/src/test/java/com/cheapp/cheapp/SanityTest.java
+/Users/marcoau01/PROYECTOS/cheapp/src/test/java/com/cheapp/cheapp/identity/adapters/out/persistence/jpa/JpaSmokeTest.java
+/Users/marcoau01/PROYECTOS/cheapp/src/test/java/com/cheapp/cheapp/identity/adapters/out/persistence/jpa/PermissionRepositoryAdapterIT.java
+/Users/marcoau01/PROYECTOS/cheapp/src/test/java/com/cheapp/cheapp/identity/adapters/out/persistence/jpa/RoleRepositoryAdapterIT.java
+/Users/marcoau01/PROYECTOS/cheapp/src/test/java/com/cheapp/cheapp/identity/adapters/out/persistence/jpa/UserRepositoryAdapterIT.java
 /Users/marcoau01/PROYECTOS/cheapp/src/test/java/com/cheapp/cheapp/identity/application/service/AssignRoleServiceTest.java
 /Users/marcoau01/PROYECTOS/cheapp/src/test/java/com/cheapp/cheapp/identity/application/service/AuthenticateUserServiceTest.java
 /Users/marcoau01/PROYECTOS/cheapp/src/test/java/com/cheapp/cheapp/identity/application/service/CreateUserServiceTest.java
+/Users/marcoau01/PROYECTOS/cheapp/src/test/java/com/cheapp/cheapp/identity/application/service/GetUserPermissionsServiceTest.java
 /Users/marcoau01/PROYECTOS/cheapp/src/test/java/com/cheapp/cheapp/identity/application/service/GetUserServiceTest.java
+/Users/marcoau01/PROYECTOS/cheapp/src/test/java/com/cheapp/cheapp/identity/application/service/ListPermissionsServiceTest.java
+/Users/marcoau01/PROYECTOS/cheapp/src/test/java/com/cheapp/cheapp/identity/application/service/ListRolesServiceTest.java
+/Users/marcoau01/PROYECTOS/cheapp/src/test/java/com/cheapp/cheapp/identity/application/service/UnassignRoleServiceTest.java
+/Users/marcoau01/PROYECTOS/cheapp/src/test/java/com/cheapp/cheapp/identity/application/service/UpdateUserServiceTest.java
