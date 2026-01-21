@@ -41,6 +41,7 @@ class AuthenticateUserServiceTest {
         assertThat(result.tokenType()).isEqualTo("Bearer");
         assertThat(result.userId()).isEqualTo(1L);
         assertThat(result.roles()).containsExactly("USER");
+        assertThat(result.permissions()).isEmpty();
     }
 
     @Test
@@ -122,7 +123,7 @@ class AuthenticateUserServiceTest {
 
     private static final class FakeJwtProvider implements JwtProviderPort {
         @Override
-        public Token createToken(Long userId, String email, Set<String> roles) {
+        public Token createToken(Long userId, String email, Set<String> roles, Set<String> permissions) {
             return new Token("token-" + userId, 3600);
         }
 

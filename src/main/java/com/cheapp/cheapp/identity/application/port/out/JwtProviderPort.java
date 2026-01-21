@@ -7,10 +7,10 @@ public interface JwtProviderPort {
     record Token(String value, long expiresInSeconds) {
     }
 
-    Token createToken(Long userId, String email, Set<String> roles);
+    Token createToken(Long userId, String email, Set<String> roles, Set<String> permissions);
 
     DecodedToken decodeAndValidate(String token);
 
-    record DecodedToken(Long userId, String email, Set<String> roles) {
+    record DecodedToken(Long userId, String email, Set<String> roles, Set<String> permissions) {
     }
 }

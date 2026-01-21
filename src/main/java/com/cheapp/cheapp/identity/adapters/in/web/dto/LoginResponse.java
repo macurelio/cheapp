@@ -8,6 +8,7 @@ public record LoginResponse(
         long expiresInSeconds,
         Long userId,
         String email,
-        Set<String> roles
+        Set<String> roles,
+        Set<String> permissions
 ) {
 }

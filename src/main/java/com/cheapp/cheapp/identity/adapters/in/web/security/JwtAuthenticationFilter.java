@@ -12,7 +12,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
-import java.util.stream.Collectors;
+import java.util.LinkedHashSet;
 
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
@@ -31,11 +31,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             var token = header.substring("Bearer ".length());
             try {
                 var decoded = jwtProvider.decodeAndValidate(token);
-                var authorities = decoded.roles().stream()
-                        .map(r -> new SimpleGrantedAuthority("ROLE_" + r))
-                        .collect(Collectors.toSet());
+
+                var authorities = new LinkedHashSet<SimpleGrantedAuthority>();
+                decoded.roles().forEach(r -> authorities.add(new SimpleGrantedAuthority("ROLE_" + r)));
+                decoded.permissions().forEach(p -> authorities.add(new SimpleGrantedAuthority("PERM_" + p)));
 
                 var auth = new UsernamePasswordAuthenticationToken(decoded.email(), null, authorities);
+                auth.setDetails(decoded.userId());
                 SecurityContextHolder.getContext().setAuthentication(auth);
             } catch (Exception ignored) {
                 // Token inválido: dejamos que Security maneje la falta de auth

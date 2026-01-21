@@ -8,6 +8,7 @@ import io.jsonwebtoken.security.Keys;
 import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
 import java.time.Instant;
+import java.util.Collection;
 import java.util.Date;
 import java.util.Set;
 
@@ -22,7 +23,7 @@ public class JjwtJwtProviderAdapter implements JwtProviderPort {
     }
 
     @Override
-    public Token createToken(Long userId, String email, Set<String> roles) {
+    public Token createToken(Long userId, String email, Set<String> roles, Set<String> permissions) {
         var now = Instant.now();
         var exp = now.plusSeconds(props.ttlSeconds());
 
@@ -33,6 +34,7 @@ public class JjwtJwtProviderAdapter implements JwtProviderPort {
                 .expiration(Date.from(exp))
                 .claim("email", email)
                 .claim("roles", roles)
+                .claim("permissions", permissions)
                 .signWith(key)
                 .compact();
 
@@ -52,8 +54,18 @@ public class JjwtJwtProviderAdapter implements JwtProviderPort {
         String email = claims.get("email", String.class);
 
         @SuppressWarnings("unchecked")
-        Set<String> roles = Set.copyOf((java.util.Collection<String>) claims.get("roles"));
+        Set<String> roles = Set.copyOf((Collection<String>) claims.get("roles"));
 
-        return new DecodedToken(userId, email, roles);
+        Set<String> permissions;
+        Object permsClaim = claims.get("permissions");
+        if (permsClaim == null) {
+            permissions = Set.of();
+        } else {
+            @SuppressWarnings("unchecked")
+            Collection<String> raw = (Collection<String>) permsClaim;
+            permissions = Set.copyOf(raw);
+        }
+
+        return new DecodedToken(userId, email, roles, permissions);
     }
 }

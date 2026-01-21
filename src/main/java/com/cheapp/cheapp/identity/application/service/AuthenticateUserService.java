@@ -36,8 +36,13 @@ public class AuthenticateUserService implements AuthenticateUserUseCase {
         }
 
         var roles = user.roles().stream().map(r -> r.name()).collect(Collectors.toUnmodifiableSet());
-        var token = jwtProvider.createToken(user.id(), user.email(), roles);
+        var permissions = user.roles().stream()
+                .flatMap(r -> r.permissions().stream())
+                .map(p -> p.name())
+                .collect(Collectors.toUnmodifiableSet());
 
-        return new Result(token.value(), "Bearer", token.expiresInSeconds(), user.id(), user.email(), roles);
+        var token = jwtProvider.createToken(user.id(), user.email(), roles, permissions);
+
+        return new Result(token.value(), "Bearer", token.expiresInSeconds(), user.id(), user.email(), roles, permissions);
     }
 }

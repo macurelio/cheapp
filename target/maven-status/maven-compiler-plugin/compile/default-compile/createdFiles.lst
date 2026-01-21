@@ -1,4 +1,5 @@
 com/cheapp/cheapp/identity/adapters/out/persistence/jpa/repository/UserSpringDataRepository.class
+com/cheapp/cheapp/identity/adapters/in/web/dto/RoleResponse.class
 com/cheapp/cheapp/identity/application/port/in/UnassignRoleUseCase$Command.class
 com/cheapp/cheapp/identity/domain/event/UserCreatedEvent.class
 com/cheapp/cheapp/identity/adapters/out/persistence/jpa/RoleRepositoryAdapter.class
@@ -6,6 +7,7 @@ com/cheapp/cheapp/identity/adapters/out/persistence/jpa/UserRepositoryAdapter.cl
 com/cheapp/cheapp/identity/adapters/in/web/dto/AssignRoleRequest.class
 com/cheapp/cheapp/identity/application/port/out/EventPublisherPort.class
 com/cheapp/cheapp/identity/application/exception/UnauthorizedException.class
+com/cheapp/cheapp/identity/adapters/in/web/RoleController.class
 com/cheapp/cheapp/identity/adapters/out/persistence/jpa/entity/PermissionJpaEntity.class
 com/cheapp/cheapp/identity/application/service/GetUserService.class
 com/cheapp/cheapp/identity/application/port/in/AuthenticateUserUseCase$Result.class
@@ -16,6 +18,7 @@ com/cheapp/cheapp/identity/application/service/CreateUserService.class
 com/cheapp/cheapp/identity/adapters/in/web/AuthController.class
 com/cheapp/cheapp/identity/application/port/out/JwtProviderPort$DecodedToken.class
 com/cheapp/cheapp/identity/adapters/out/security/jwt/JwtProperties.class
+com/cheapp/cheapp/identity/adapters/in/web/MeController.class
 com/cheapp/cheapp/identity/application/port/in/GetUserUseCase.class
 com/cheapp/cheapp/identity/adapters/out/persistence/jpa/entity/RoleJpaEntity.class
 com/cheapp/cheapp/identity/adapters/in/web/dto/UserResponse.class
@@ -23,11 +26,16 @@ com/cheapp/cheapp/identity/application/port/in/AuthenticateUserUseCase$Command.c
 com/cheapp/cheapp/CheappApplication.class
 com/cheapp/cheapp/identity/application/port/in/CreateUserUseCase$Command.class
 com/cheapp/cheapp/identity/application/service/UpdateUserService.class
+com/cheapp/cheapp/identity/application/service/GetUserPermissionsService.class
+com/cheapp/cheapp/identity/adapters/out/persistence/jpa/repository/PermissionSpringDataRepository.class
 com/cheapp/cheapp/identity/application/port/in/UnassignRoleUseCase.class
 com/cheapp/cheapp/identity/application/port/in/UpdateUserUseCase$Command.class
 com/cheapp/cheapp/identity/application/exception/NotFoundException.class
 com/cheapp/cheapp/identity/application/service/UnassignRoleService.class
+com/cheapp/cheapp/identity/application/service/ListRolesService.class
+com/cheapp/cheapp/identity/application/service/ListPermissionsService.class
 com/cheapp/cheapp/identity/application/port/out/RoleRepositoryPort.class
+com/cheapp/cheapp/identity/application/port/in/ListRolesUseCase.class
 com/cheapp/cheapp/identity/application/service/AssignRoleService.class
 com/cheapp/cheapp/identity/application/port/out/JwtProviderPort$Token.class
 com/cheapp/cheapp/identity/domain/model/Role.class
@@ -35,6 +43,7 @@ com/cheapp/cheapp/identity/adapters/out/persistence/jpa/mapper/IdentityJpaMapper
 com/cheapp/cheapp/identity/adapters/in/web/security/JwtAuthenticationFilter.class
 com/cheapp/cheapp/identity/application/port/in/CreateUserUseCase.class
 com/cheapp/cheapp/identity/adapters/in/web/RestExceptionHandler.class
+com/cheapp/cheapp/identity/adapters/out/persistence/jpa/PermissionRepositoryAdapter.class
 com/cheapp/cheapp/identity/application/port/out/PasswordEncoderPort.class
 com/cheapp/cheapp/identity/domain/model/User.class
 com/cheapp/cheapp/identity/adapters/out/event/LoggingEventPublisherAdapter.class
@@ -45,8 +54,10 @@ com/cheapp/cheapp/identity/adapters/out/security/jwt/JjwtJwtProviderAdapter.clas
 com/cheapp/cheapp/identity/application/port/in/UpdateUserUseCase.class
 com/cheapp/cheapp/identity/domain/event/RoleAssignedEvent.class
 com/cheapp/cheapp/identity/adapters/in/web/dto/UpdateUserRequest.class
+com/cheapp/cheapp/identity/adapters/in/web/PermissionController.class
 com/cheapp/cheapp/identity/domain/event/DomainEvent.class
 com/cheapp/cheapp/identity/application/port/in/AssignRoleUseCase.class
+com/cheapp/cheapp/identity/adapters/in/web/dto/PermissionResponse.class
 com/cheapp/cheapp/identity/adapters/in/web/dto/LoginResponse.class
 com/cheapp/cheapp/identity/adapters/in/web/security/SecurityConfig.class
 com/cheapp/cheapp/identity/application/service/AuthenticateUserService.class
@@ -57,6 +68,10 @@ com/cheapp/cheapp/identity/application/port/in/GetUserUseCase$Result.class
 com/cheapp/cheapp/identity/adapters/in/web/dto/LoginRequest.class
 com/cheapp/cheapp/identity/adapters/in/web/dto/CreateUserRequest.class
 com/cheapp/cheapp/identity/application/port/in/CreateUserUseCase$Result.class
+com/cheapp/cheapp/identity/application/port/in/GetUserPermissionsUseCase.class
 com/cheapp/cheapp/identity/application/port/out/JwtProviderPort.class
 com/cheapp/cheapp/identity/domain/model/Permission.class
+com/cheapp/cheapp/identity/application/port/out/PermissionRepositoryPort.class
+com/cheapp/cheapp/identity/application/port/in/ListPermissionsUseCase.class
+com/cheapp/cheapp/identity/adapters/in/web/dto/MeResponse.class
 com/cheapp/cheapp/identity/application/exception/ConflictException.class

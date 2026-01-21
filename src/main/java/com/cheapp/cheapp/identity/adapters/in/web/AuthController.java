@@ -26,7 +26,8 @@ public class AuthController {
                 result.expiresInSeconds(),
                 result.userId(),
                 result.email(),
-                result.roles()
+                result.roles(),
+                result.permissions()
         ));
     }
 }

@@ -99,6 +99,11 @@ class AssignRoleServiceTest {
             if (role == null) return Optional.empty();
             return role.name().equals(name) ? Optional.of(role) : Optional.empty();
         }
+
+        @Override
+        public List<Role> findAll() {
+            return role == null ? List.of() : List.of(role);
+        }
     }
 
     private static final class CapturingEventPublisher implements EventPublisherPort {
