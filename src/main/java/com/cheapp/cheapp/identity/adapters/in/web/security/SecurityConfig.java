@@ -33,6 +33,8 @@ public class SecurityConfig {
                         .requestMatchers("/auth/login").permitAll()
                         .requestMatchers(org.springframework.http.HttpMethod.POST, "/users").permitAll()
                         .requestMatchers(org.springframework.http.HttpMethod.POST, "/admin/users").hasAnyRole("ADMIN", "SUPER_USER")
+                        .requestMatchers(org.springframework.http.HttpMethod.POST, "/admin/users/admin").hasAnyRole("ADMIN", "SUPER_USER")
+                        .requestMatchers(org.springframework.http.HttpMethod.POST, "/admin/users/super-user").hasAnyRole("ADMIN", "SUPER_USER")
                         .requestMatchers(org.springframework.http.HttpMethod.GET, "/roles", "/permissions").hasAuthority("PERM_IAM_ROLE_READ")
                         .requestMatchers(org.springframework.http.HttpMethod.POST, "/users/*/roles").hasAuthority("PERM_IAM_ROLE_ASSIGN")
                         .requestMatchers(org.springframework.http.HttpMethod.DELETE, "/users/*/roles/*").hasAuthority("PERM_IAM_ROLE_ASSIGN")

@@ -33,7 +33,11 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<CreateUserResponse> create(@Valid @RequestBody CreateUserRequest request) {
-        var result = createUserUseCase.create(new CreateUserUseCase.Command(request.email(), request.password()));
+        var result = createUserUseCase.create(new CreateUserUseCase.Command(
+                request.email(),
+                request.password(),
+                java.util.Set.of()
+        ));
         return ResponseEntity.status(HttpStatus.CREATED).body(new CreateUserResponse(result.id(), result.email()));
     }
 

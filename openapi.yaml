@@ -193,6 +193,60 @@ paths:
         content:
           application/json:
             schema:
+              $ref: '#/components/schemas/AdminCreateUserRequest'
+      responses:
+        '201':
+          description: Usuario creado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateUserResponse'
+        '400':
+          description: Datos inválidos (email/password/roles no cumplen restricciones)
+        '401':
+          description: No autorizado
+        '403':
+          description: Prohibido
+  /admin/users/admin:
+    post:
+      tags:
+        - Admin
+      summary: Crear usuario ADMIN
+      description: Crea un nuevo usuario con rol ROLE_ADMIN. Requiere rol ADMIN o SUPER_USER.
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUserRequest'
+      responses:
+        '201':
+          description: Usuario creado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateUserResponse'
+        '400':
+          description: Datos inválidos (email/password no cumplen restricciones)
+        '401':
+          description: No autorizado
+        '403':
+          description: Prohibido
+  /admin/users/super-user:
+    post:
+      tags:
+        - Admin
+      summary: Crear usuario SUPER_USER
+      description: Crea un nuevo usuario con rol ROLE_SUPER_USER. Requiere rol ADMIN o SUPER_USER.
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
               $ref: '#/components/schemas/CreateUserRequest'
       responses:
         '201':
@@ -214,6 +268,24 @@ components:
       scheme: bearer
       bearerFormat: JWT
   schemas:
+    AdminCreateUserRequest:
+      type: object
+      required: [email, password, roles]
+      properties:
+        email:
+          type: string
+          format: email
+          example: admin@example.com
+        password:
+          type: string
+          minLength: 8
+          maxLength: 72
+          example: P@ssw0rd
+        roles:
+          type: array
+          items:
+            type: string
+          example: ["ROLE_ADMIN"]
     CreateUserRequest:
       type: object
       required: [email, password]

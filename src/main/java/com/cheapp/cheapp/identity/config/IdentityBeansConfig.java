@@ -56,9 +56,10 @@ public class IdentityBeansConfig {
     // Use cases (in)
     @Bean
     CreateUserUseCase createUserUseCase(UserRepositoryPort userRepositoryPort,
+                                        RoleRepositoryPort roleRepositoryPort,
                                         PasswordEncoderPort passwordEncoderPort,
                                         EventPublisherPort eventPublisherPort) {
-        return new CreateUserService(userRepositoryPort, passwordEncoderPort, eventPublisherPort);
+        return new CreateUserService(userRepositoryPort, roleRepositoryPort, passwordEncoderPort, eventPublisherPort);
     }
 
     @Bean
