@@ -14,6 +14,8 @@ tags:
     description: Autenticación (login)
   - name: Users
     description: Gestión de usuarios
+  - name: Admin
+    description: Operaciones administrativas
 paths:
   /auth/login:
     post:
@@ -178,6 +180,33 @@ paths:
           description: No autorizado
         '404':
           description: Usuario o rol no encontrado
+  /admin/users:
+    post:
+      tags:
+        - Admin
+      summary: Crear usuario (admin)
+      description: Crea un nuevo usuario. Requiere rol ADMIN o SUPER_USER.
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUserRequest'
+      responses:
+        '201':
+          description: Usuario creado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateUserResponse'
+        '400':
+          description: Datos inválidos (email/password no cumplen restricciones)
+        '401':
+          description: No autorizado
+        '403':
+          description: Prohibido
 components:
   securitySchemes:
     bearerAuth:

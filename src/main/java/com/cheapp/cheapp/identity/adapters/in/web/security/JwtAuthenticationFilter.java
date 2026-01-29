@@ -33,7 +33,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 var decoded = jwtProvider.decodeAndValidate(token);
 
                 var authorities = new LinkedHashSet<SimpleGrantedAuthority>();
-                decoded.roles().forEach(r -> authorities.add(new SimpleGrantedAuthority("ROLE_" + r)));
+                decoded.roles().forEach(r -> {
+                    var role = r.startsWith("ROLE_") ? r : "ROLE_" + r;
+                    authorities.add(new SimpleGrantedAuthority(role));
+                });
                 decoded.permissions().forEach(p -> authorities.add(new SimpleGrantedAuthority("PERM_" + p)));
 
                 var auth = new UsernamePasswordAuthenticationToken(decoded.email(), null, authorities);

@@ -2,7 +2,7 @@ spring:
   application:
     name: cheapp
   datasource:
-    url: ${DB_URL:jdbc:postgresql://localhost:5432/postgres}
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/cheappinv}
     username: postgres
     password:
   jpa:
